@@ -38,6 +38,9 @@
             this.隐藏ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.退出ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rbNormal = new System.Windows.Forms.RadioButton();
+            this.rbShowBig = new System.Windows.Forms.RadioButton();
+            this.rbQuiet = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -64,7 +67,7 @@
             this.dgvStocks.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dgvStocks.Size = new System.Drawing.Size(640, 150);
             this.dgvStocks.TabIndex = 1;
-            this.dgvStocks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStocks_CellContentClick);
+            this.dgvStocks.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStocks_CellClick);
             // 
             // niNewData
             // 
@@ -110,11 +113,48 @@
             this.退出ToolStripMenuItem.Text = "退出";
             this.退出ToolStripMenuItem.Click += new System.EventHandler(this.QuitToolStripMenuItem_Click);
             // 
+            // rbNormal
+            // 
+            this.rbNormal.AutoSize = true;
+            this.rbNormal.Location = new System.Drawing.Point(320, 12);
+            this.rbNormal.Name = "rbNormal";
+            this.rbNormal.Size = new System.Drawing.Size(71, 16);
+            this.rbNormal.TabIndex = 2;
+            this.rbNormal.TabStop = true;
+            this.rbNormal.Text = "普通模式";
+            this.rbNormal.UseVisualStyleBackColor = true;
+            // 
+            // rbShowBig
+            // 
+            this.rbShowBig.AutoSize = true;
+            this.rbShowBig.Checked = true;
+            this.rbShowBig.Location = new System.Drawing.Point(397, 12);
+            this.rbShowBig.Name = "rbShowBig";
+            this.rbShowBig.Size = new System.Drawing.Size(71, 16);
+            this.rbShowBig.TabIndex = 3;
+            this.rbShowBig.TabStop = true;
+            this.rbShowBig.Text = "显示大额";
+            this.rbShowBig.UseVisualStyleBackColor = true;
+            // 
+            // rbQuiet
+            // 
+            this.rbQuiet.AutoSize = true;
+            this.rbQuiet.Location = new System.Drawing.Point(474, 12);
+            this.rbQuiet.Name = "rbQuiet";
+            this.rbQuiet.Size = new System.Drawing.Size(71, 16);
+            this.rbQuiet.TabIndex = 4;
+            this.rbQuiet.TabStop = true;
+            this.rbQuiet.Text = "安静模式";
+            this.rbQuiet.UseVisualStyleBackColor = true;
+            // 
             // StockNotifier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 206);
+            this.Controls.Add(this.rbQuiet);
+            this.Controls.Add(this.rbShowBig);
+            this.Controls.Add(this.rbNormal);
             this.Controls.Add(this.dgvStocks);
             this.Controls.Add(this.btnUpdate);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -124,6 +164,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -137,6 +178,9 @@
         private System.Windows.Forms.ToolStripMenuItem 隐藏ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem 退出ToolStripMenuItem;
+        private System.Windows.Forms.RadioButton rbNormal;
+        private System.Windows.Forms.RadioButton rbShowBig;
+        private System.Windows.Forms.RadioButton rbQuiet;
     }
 }
 

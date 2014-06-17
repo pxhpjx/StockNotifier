@@ -3,7 +3,7 @@
   <Stock>
     <ID>6015191</ID>
     <Name>大智慧</Name>
-    <MyAverageCost>7.7</MyAverageCost>
+    <MyAverageCost>8.02</MyAverageCost>
   </Stock>
   <Stock>
     <ID>3000592</ID>
@@ -16,19 +16,19 @@
     <MyAverageCost>21.99</MyAverageCost>
   </Stock>
   <Stock>
-    <ID>6019391</ID>
-    <Name>建行</Name>
-    <MyAverageCost>3.99</MyAverageCost>
+    <ID>6035551</ID>
+    <Name>贵人鸟</Name>
+    <MyAverageCost>10.82</MyAverageCost>
   </Stock>
   <Stock>
-    <ID>6012881</ID>
-    <Name>农行</Name>
-    <MyAverageCost>2.39</MyAverageCost>
+    <ID>0007762</ID>
+    <Name>广发</Name>
+    <MyAverageCost>10.20</MyAverageCost>
   </Stock>
   <Stock>
-    <ID>6018181</ID>
-    <Name>光大</Name>
-    <MyAverageCost>2.49</MyAverageCost>
+    <ID>6008391</ID>
+    <Name>长虹</Name>
+    <MyAverageCost>3.67</MyAverageCost>
   </Stock>
   <Stock>
     <ID>6019881</ID>
@@ -36,13 +36,13 @@
     <MyAverageCost>2.54</MyAverageCost>
   </Stock>
   <Stock>
-    <ID>6013981</ID>
-    <Name>工行</Name>
-    <MyAverageCost>3.41</MyAverageCost>
+    <ID>0020322</ID>
+    <Name>苏泊尔</Name>
+    <MyAverageCost>14.22</MyAverageCost>
   </Stock>
   <Stock>
-    <ID>6013281</ID>
-    <Name>交行</Name>
-    <MyAverageCost>3.79</MyAverageCost>
+    <ID>6000091</ID>
+    <Name>上海机场</Name>
+    <MyAverageCost>13.27</MyAverageCost>
   </Stock>
 </ArrayOfStock>

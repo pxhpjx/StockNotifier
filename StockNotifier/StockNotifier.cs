@@ -67,7 +67,9 @@ namespace StockNotifier
                     this.Visible = false;
                 UpdateTimer.Interval = 300000;
             }
-            btnUpdate_Click(this, new EventArgs());
+            int h24 = DateTime.Now.Hour;
+            if (h24 >= 9 && h24 < 15)
+                btnUpdate_Click(this, new EventArgs());
         }
 
         void StockNotifier_MinimumSizeChanged(object sender, EventArgs e)
@@ -128,13 +130,17 @@ namespace StockNotifier
                     if (r != null)
                     {
                         list.Add(r);
-                        niNewData.BalloonTipText += string.Format("{3}{0}   {1}   {2}", r.Name, r.RealPrice, r.ChangePercentage, string.IsNullOrWhiteSpace(niNewData.BalloonTipText) ? "" : "\r\n");
+                        if (rbQuiet.Checked)
+                            continue;
+                        if (rbNormal.Checked || (rbShowBig.Checked && (FormatTools.ParseDouble(r.ChangePercentage.Trim('%')) > 2 || FormatTools.ParseDouble(r.ChangePercentage.Trim('%')) < -2)))
+                            niNewData.BalloonTipText += string.Format("{3}{0}   {1}   {2}", r.Name, r.RealPrice, r.ChangePercentage, string.IsNullOrWhiteSpace(niNewData.BalloonTipText) ? "" : "\r\n");
                     }
                 }
                 if (list.Count > 0)
                 {
                     BeginInvoke(new Action(() => dgvStocks.DataSource = list));
-                    niNewData.ShowBalloonTip(5000);
+                    if (!string.IsNullOrWhiteSpace(niNewData.BalloonTipText))
+                        niNewData.ShowBalloonTip(5000);
                 }
             }
         }
@@ -162,7 +168,7 @@ namespace StockNotifier
             this.Close();
         }
 
-        private void dgvStocks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dgvStocks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 0)
             {
