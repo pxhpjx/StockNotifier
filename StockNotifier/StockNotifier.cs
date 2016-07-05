@@ -61,15 +61,23 @@ namespace StockNotifier
 
         void UpdateTimer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (UpdateTimer.Interval != 300000)
+            int interval = FormatTools.ParseInt(txtInterval.Text) * 1000;
+            if (interval <= 0)
+            {
+                txtInterval.Text = "60";
+                interval = 60 * 1000;
+            }
+            if (UpdateTimer.Interval != interval)
             {
                 if (UpdateTimer.Interval % 10 == 1)
                     this.Visible = false;
-                UpdateTimer.Interval = 300000;
+                UpdateTimer.Interval = interval;
             }
             int h24 = DateTime.Now.Hour;
-            if (h24 >= 9 && h24 < 15)
-                btnUpdate_Click(this, new EventArgs());
+            int min = DateTime.Now.Minute;
+            if (h24 >= 9 && h24 <= 15)
+                if (h24 >= 13 || h24 < 11 || (h24 == 11 && min <= 30))
+                    btnUpdate_Click(this, new EventArgs());
         }
 
         void StockNotifier_MinimumSizeChanged(object sender, EventArgs e)
@@ -170,20 +178,26 @@ namespace StockNotifier
 
         private void dgvStocks_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
-            {
-                string ID = ((List<Stock>)dgvStocks.DataSource)[e.RowIndex].ID;
-                string Url = string.Format("http://quote.eastmoney.com/{0}{1}.html", (ID[ID.Length - 1] == '1' ? "sh" : "sz"), ID.Substring(0, ID.Length - 1));
-                if (FormatTools.ParseString(Get("ClickUrl")) == Url)
-                    Process.Start(@"D:\Mozilla Firefox\firefox.exe", Url);
-                else
-                    SetAbsolute("ClickUrl", Url, 22);
-            }
+            if (e.ColumnIndex > 1)
+                return;
+
+            string id = ((List<Stock>)dgvStocks.DataSource)[e.RowIndex].ID;
+            string url;
+            int col = e.ColumnIndex;
+            if (col == 0)
+                url = string.Format("http://quote.eastmoney.com/{0}{1}.html", (id[id.Length - 1] == '1' ? "sh" : "sz"), id.Substring(0, id.Length - 1));
+            else
+                url = string.Format("http://data.eastmoney.com/zjlx/{0}.html", id.Substring(0, id.Length - 1));
+            string key = "ClickUrl" + col;
+            if (FormatTools.ParseString(Get(key)) == url)
+                Process.Start(@"D:\Mozilla Firefox\firefox.exe", url);
+            else
+                SetAbsolute(key, url, 22);
         }
 
         public static void SetAbsolute(string key, object obj, double CacheSeconds, CacheItemPriority Level = CacheItemPriority.Normal)
         {
-            HttpRuntime.Cache.Insert(key, obj, null, DateTime.UtcNow.AddSeconds(CacheSeconds), System.Web.Caching.Cache.NoSlidingExpiration, Level, null);
+            HttpRuntime.Cache.Insert(key, obj, null, DateTime.Now.AddSeconds(CacheSeconds), System.Web.Caching.Cache.NoSlidingExpiration, Level, null);
         }
 
         public static object Get(string key)

@@ -45,4 +45,19 @@
     <Name>上海机场</Name>
     <MyAverageCost>13.27</MyAverageCost>
   </Stock>
+  <Stock>
+    <ID>6016001</ID>
+    <Name>中国铝业</Name>
+    <MyAverageCost>10.48</MyAverageCost>
+  </Stock>
+  <Stock>
+    <ID>6017271</ID>
+    <Name>上海电气</Name>
+    <MyAverageCost>8.27</MyAverageCost>
+  </Stock>
+  <Stock>
+    <ID>0000011</ID>
+    <Name>上证指数</Name>
+    <MyAverageCost>2222</MyAverageCost>
+  </Stock>
 </ArrayOfStock>

@@ -41,6 +41,7 @@
             this.rbNormal = new System.Windows.Forms.RadioButton();
             this.rbShowBig = new System.Windows.Forms.RadioButton();
             this.rbQuiet = new System.Windows.Forms.RadioButton();
+            this.txtInterval = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStocks)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -147,11 +148,21 @@
             this.rbQuiet.Text = "安静模式";
             this.rbQuiet.UseVisualStyleBackColor = true;
             // 
+            // txtInterval
+            // 
+            this.txtInterval.Location = new System.Drawing.Point(152, 11);
+            this.txtInterval.Name = "txtInterval";
+            this.txtInterval.Size = new System.Drawing.Size(52, 21);
+            this.txtInterval.TabIndex = 5;
+            this.txtInterval.Text = "180";
+            this.txtInterval.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // StockNotifier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(665, 206);
+            this.Controls.Add(this.txtInterval);
             this.Controls.Add(this.rbQuiet);
             this.Controls.Add(this.rbShowBig);
             this.Controls.Add(this.rbNormal);
@@ -181,6 +192,7 @@
         private System.Windows.Forms.RadioButton rbNormal;
         private System.Windows.Forms.RadioButton rbShowBig;
         private System.Windows.Forms.RadioButton rbQuiet;
+        private System.Windows.Forms.TextBox txtInterval;
     }
 }
 
